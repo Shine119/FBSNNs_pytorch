@@ -11,10 +11,10 @@ class neural_net(nn.Module):
         super(neural_net, self).__init__()
         self.pathbatch = pathbatch
         self.fc_1 = nn.Linear(n_dim, 256)
-        self.fc_2 = nn.Linear(256, 128)
-        self.fc_3 = nn.Linear(128, 128)
+        self.fc_2 = nn.Linear(256, 256)
+        self.fc_3 = nn.Linear(256, 256)
         self.fc_4 = nn.Linear(256, 256)
-        self.out = nn.Linear(128, n_output)
+        self.out = nn.Linear(256, n_output)
 
         self.relu = nn.ReLU()
         self.prelu = nn.PReLU()
