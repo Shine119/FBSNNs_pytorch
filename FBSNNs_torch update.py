@@ -13,6 +13,7 @@ class neural_net(nn.Module):
         self.fc_1 = nn.Linear(n_dim, 256)
         self.fc_2 = nn.Linear(256, 128)
         self.fc_3 = nn.Linear(128, 128)
+        self.fc_4 = nn.Linear(256, 256)
         self.out = nn.Linear(128, n_output)
 
         self.relu = nn.ReLU()
@@ -23,12 +24,14 @@ class neural_net(nn.Module):
             torch.nn.init.xavier_uniform(self.fc_1.weight)
             torch.nn.init.xavier_uniform(self.fc_2.weight)
             torch.nn.init.xavier_uniform(self.fc_3.weight)
+            torch.nn.init.xavier_uniform(self.fc_4.weight)
 
 
     def forward(self, state, train=False):
         state = torch.sin(self.fc_1(state))   
         state = torch.sin(self.fc_2(state))  
         state = torch.sin(self.fc_3(state))  
+        state = torch.sin(self.fc_4(state)) 
         fn_u = self.out(state)
         return fn_u
 
